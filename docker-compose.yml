@@ -1,26 +1,23 @@
-version: '3'
+version: '3.7'
 
 services:
-  web:
-    build: .
-    command: gunicorn prepify.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/code
-    depends_on:
-      - db
+  django_gunicorn:
+    volumes: 
+      - static:/static
     env_file:
       - .env
-
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    command: gunicorn prepify.wsgi:application --bind 0.0.0.0:8000
+  nginx: 
+    build: ./nginx
+    volumes: 
+      - static:/static
+    ports: 
+      - "80:80"
+    depends_on:
+    - django_gunicorn
 volumes:
-  postgres_data:
+  static:

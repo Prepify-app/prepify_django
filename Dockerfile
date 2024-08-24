@@ -1,14 +1,14 @@
-FROM python:3.9
+FROM python:3.10-alpine
 
-# Устанавливаем рабочую директорию
-WORKDIR /code
+WORKDIR /app
+COPY . /app
 
-# Копируем файл requirements.txt и устанавливаем зависимости
-COPY requirements.txt /code/
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Копируем весь проект в контейнер
-COPY . /code/
+EXPOSE 8000
 
-# Запускаем Gunicorn для сервера Django
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "prepify.wsgi:application"]
+
+# Определите команду для запуска приложения
+ENTRYPOINT ["python", "manage.py"]
+CMD ["runserver", "0.0.0.0:8000"]
