@@ -27,4 +27,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: True
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/<image-name>:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/shahruhabd/prepify_django:latest
