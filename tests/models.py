@@ -10,7 +10,10 @@ class Test(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
+    
+    class Meta:
+        verbose_name = 'Тест'
+        verbose_name_plural = 'Тесты'
 
 class TestResult(models.Model):
     user_id = models.IntegerField()
@@ -19,6 +22,10 @@ class TestResult(models.Model):
     completed_at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Результат теста'
+        verbose_name_plural = 'Результаты тестов'
 
 
 class Category(models.Model): 
@@ -41,6 +48,10 @@ class Level(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = 'Уровень'
+        verbose_name_plural = 'Уровни'
 
 class Question(models.Model):
     text = models.TextField()
@@ -54,6 +65,10 @@ class Question(models.Model):
     def __str__(self):
         return self.text
     
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+    
 
 class AnswerOption(models.Model): 
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answer_options')
@@ -61,3 +76,7 @@ class AnswerOption(models.Model):
     is_correct = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Вариант ответа'
+        verbose_name_plural = 'Варианты ответов'

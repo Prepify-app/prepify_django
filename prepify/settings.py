@@ -11,12 +11,14 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['157.245.123.144', 'localhost']
+ALLOWED_HOSTS = ['157.245.123.144', 'localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
     'tests',
+    'admin_panel',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,6 +28,44 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
 ]
+
+# settings.py
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Prepify Admin",  # Заголовок страницы админки
+    "site_header": "Prepify Administration",  # Заголовок в шапке
+    "site_brand": "Prepify",  # Название бренда
+    "site_logo": "images/logo.webp",  # Путь к логотипу (добавьте логотип в директорию static)
+    "welcome_sign": "Добро пожаловать в админку Prepify",  # Приветствие на главной странице админки
+    "copyright": "Prepify © 2024",  # Копирайт внизу страницы
+    "search_model": ["auth.User", "auth.Group"],  # Поиск по моделям
+
+    # Настройки навигации
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},  # Ссылка на главную страницу админки
+        {"model": "auth.User"},  # Ссылка на пользователей
+        {"app": "your_app"},  # Ссылка на ваше приложение
+    ],
+
+    # Настройка бокового меню
+    "show_sidebar": True,  # Отображение бокового меню
+    "navigation_expanded": True,  # Меню развернуто по умолчанию
+    "hide_apps": [],  # Приложения, которые скрыты
+    "hide_models": [],  # Модели, которые скрыты
+    "order_with_respect_to": ["auth", "your_app"],  # Порядок отображения приложений
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "your_app.ModelName": "fas fa-layer-group",  # Пример настройки иконки для модели
+    },
+    
+    # Дополнительные настройки
+    "show_ui_builder": False,  # Скрыть кнопку настройки интерфейса (рекомендуется оставить False в продакшене)
+    
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +101,7 @@ WSGI_APPLICATION = 'prepify.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Prod
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -71,6 +112,14 @@ DATABASES = {
         'PORT': os.getenv('PORT'),
     }
 }
+
+# DEV
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "mydatabase",
+#     }
+# }
 
 
 # Password validation
@@ -106,8 +155,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Каталог для хранения собранных статических файлов (после выполнения collectstatic)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Каталог для исходных статических файлов (которые вы создаете в процессе разработки)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Исходные статические файлы
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
