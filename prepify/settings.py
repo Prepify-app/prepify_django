@@ -30,16 +30,16 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
-# settings.py
-
 JAZZMIN_SETTINGS = {
     "site_title": "Prepify Admin",  # Заголовок страницы админки
     "site_header": "Prepify Administration",  # Заголовок в шапке
     "site_brand": "Prepify",  # Название бренда
+    "login_logo": None,
     "site_logo": "images/logo.webp",  # Путь к логотипу (добавьте логотип в директорию static)
     "welcome_sign": "Добро пожаловать в админку Prepify",  # Приветствие на главной странице админки
     "copyright": "Prepify © 2024",  # Копирайт внизу страницы
     "search_model": ["auth.User", "auth.Group"],  # Поиск по моделям
+    "custom_css": "css/main.css",
 
     # Настройки навигации
     "topmenu_links": [
