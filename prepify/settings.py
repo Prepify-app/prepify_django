@@ -31,41 +31,41 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Prepify Admin",  # Заголовок страницы админки
-    "site_header": "Prepify Administration",  # Заголовок в шапке
-    "site_brand": "Prepify",  # Название бренда
-    "login_logo": None,
-    "site_logo": "images/logo.webp",  # Путь к логотипу (добавьте логотип в директорию static)
-    "welcome_sign": "Добро пожаловать в админку Prepify",  # Приветствие на главной странице админки
-    "copyright": "Prepify © 2024",  # Копирайт внизу страницы
-    "search_model": ["auth.User", "auth.Group"],  # Поиск по моделям
-    "custom_css": "css/main.css",
+# JAZZMIN_SETTINGS = {
+#     "site_title": "Prepify Admin",  # Заголовок страницы админки
+#     "site_header": "Prepify Administration",  # Заголовок в шапке
+#     "site_brand": "Prepify",  # Название бренда
+#     "login_logo": None,
+#     "site_logo": "images/logo.webp",  # Путь к логотипу (добавьте логотип в директорию static)
+#     "welcome_sign": "Добро пожаловать в админку Prepify",  # Приветствие на главной странице админки
+#     "copyright": "Prepify © 2024",  # Копирайт внизу страницы
+#     "search_model": ["auth.User", "auth.Group"],  # Поиск по моделям
+#     "custom_css": "css/main.css",
 
-    # Настройки навигации
-    "topmenu_links": [
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},  # Ссылка на главную страницу админки
-        {"model": "auth.User"},  # Ссылка на пользователей
-        {"app": "your_app"},  # Ссылка на ваше приложение
-    ],
+#     # Настройки навигации
+#     "topmenu_links": [
+#         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},  # Ссылка на главную страницу админки
+#         {"model": "auth.User"},  # Ссылка на пользователей
+#         {"app": "your_app"},  # Ссылка на ваше приложение
+#     ],
 
-    # Настройка бокового меню
-    "show_sidebar": True,  # Отображение бокового меню
-    "navigation_expanded": True,  # Меню развернуто по умолчанию
-    "hide_apps": [],  # Приложения, которые скрыты
-    "hide_models": [],  # Модели, которые скрыты
-    "order_with_respect_to": ["auth", "your_app"],  # Порядок отображения приложений
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-        "your_app.ModelName": "fas fa-layer-group",  # Пример настройки иконки для модели
-    },
+#     # Настройка бокового меню
+#     "show_sidebar": True,  # Отображение бокового меню
+#     "navigation_expanded": True,  # Меню развернуто по умолчанию
+#     "hide_apps": [],  # Приложения, которые скрыты
+#     "hide_models": [],  # Модели, которые скрыты
+#     "order_with_respect_to": ["auth", "your_app"],  # Порядок отображения приложений
+#     "icons": {
+#         "auth": "fas fa-users-cog",
+#         "auth.user": "fas fa-user",
+#         "auth.Group": "fas fa-users",
+#         "your_app.ModelName": "fas fa-layer-group",  # Пример настройки иконки для модели
+#     },
     
-    # Дополнительные настройки
-    "show_ui_builder": False,  # Скрыть кнопку настройки интерфейса (рекомендуется оставить False в продакшене)
+#     # Дополнительные настройки
+#     "show_ui_builder": False,  # Скрыть кнопку настройки интерфейса (рекомендуется оставить False в продакшене)
     
-}
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
