@@ -18,7 +18,7 @@ ALLOWED_HOSTS = ['157.245.123.144', 'localhost', '127.0.0.1']
 INSTALLED_APPS = [
     'tests',
     'admin_panel',
-    'jazzmin',
+    # 'jazzmin',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
