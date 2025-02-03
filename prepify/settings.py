@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['157.245.123.144', 'localhost', '127.0.0.1']
 
@@ -80,8 +80,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'prepify.urls'
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://157.245.123.144:3000',
+    'http://157.245.123.144:8085',
+]   
+
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 TEMPLATES = [
     {
