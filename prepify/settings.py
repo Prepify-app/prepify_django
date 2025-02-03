@@ -82,6 +82,11 @@ ROOT_URLCONF = 'prepify.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ALLOWED_ORIGINS = [
+    "http://157.245.123.144:8085",  
+    "http://localhost:3000",
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
